@@ -23,7 +23,7 @@
     "url": "https://github.com/Microsoft/vscodetestcover.git"
   },
   "devDependencies": {
-    "@types/node": "20.11.28",
+    "@types/node": "20.11.30",
     "@types/mocha": "10.0.6",
     "@types/istanbul-lib-coverage": "2.0.6",
     "@types/istanbul-lib-hook": "2.0.4",
