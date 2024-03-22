@@ -1,4 +1,31 @@
 {
+	"name": "@microsoft/vscodetestcover",
+	"version": "0.0.1",
+	"private": false,
+	"description": "A Mocha test runner with code coverage support for VS Code Azure Data Studio Extensions.",
+	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
+	"bugs": {
+		"url": "https://github.com/CodeEditorLand/Foundation/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"author": {
+		"name": "Playform",
+		"email": "Hello@Playform.Cloud",
+		"url": "https://playform.cloud"
+	},
+	"type": "module",
+	"main": "./out/src/index.js",
+	"typings": "./out/src/index.d.ts",
+	"scripts": {
+		"compile": "tsc",
+		"prepare": "yarn compile",
+		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
+		"watch": "tsc -w"
+	},
 	"dependencies": {
 		"decache": "4.6.2",
 		"glob": "10.3.10",
@@ -10,7 +37,6 @@
 		"istanbul-reports": "3.1.7",
 		"mocha": "10.3.0"
 	},
-	"description": "A Mocha test runner with code coverage support for VS Code Azure Data Studio Extensions.",
 	"devDependencies": {
 		"@types/istanbul-lib-coverage": "2.0.6",
 		"@types/istanbul-lib-hook": "2.0.4",
@@ -25,14 +51,7 @@
 		"typescript": "5.4.2",
 		"typescript-esbuild": "0.4.5"
 	},
-	"main": "./out/src/index.js",
-	"name": "@microsoft/vscodetestcover",
-	"scripts": {
-		"compile": "tsc",
-		"prepare": "yarn compile",
-		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
-		"watch": "tsc -w"
-	},
-	"type": "module",
-	"typings": "./out/src/index.d.ts"
+	"publishConfig": {
+		"access": "public"
+	}
 }
