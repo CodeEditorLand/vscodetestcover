@@ -30,14 +30,14 @@
 		"prepublishOnly": "Build 'Source/**/*.ts'"
 	},
 	"dependencies": {
-		"decache": "^4.4.0",
-		"glob": "^7.1.2"
+		"decache": "4.6.2",
+		"glob": "10.3.12"
 	},
 	"devDependencies": {
 		"@playform/build": "0.0.7",
 		"@playform/document": "0.0.6",
-		"@types/node": "^10.7.0",
-		"del": "^6.0.0"
+		"@types/node": "20.12.7",
+		"del": "7.1.0"
 	},
 	"publishConfig": {
 		"access": "public"
