@@ -1,18 +1,50 @@
 {
-	"dependencies": {
-		"decache": "4.6.2",
-		"glob": "10.4.1"
-	},
-	"description": "A Mocha test runner with code coverage support for VS Code Azure Data Studio Extensions.",
-	"devDependencies": {
-		"@types/node": "20.14.2",
-		"del": "7.1.0"
-	},
-	"main": "./out/src/index.js",
-	"name": "@microsoft/vscodetestcover",
-	"scripts": {
-		"compile": "tsc",
-		"prepare": "yarn compile"
-	},
-	"typings": "./out/src/index.d.ts"
+  "name": "@microsoft/vscodetestcover",
+  "version": "1.2.2",
+  "description": "A Mocha test runner with code coverage support for VS Code Azure Data Studio Extensions.",
+  "main": "./out/src/index.js",
+  "typings": "./out/src/index.d.ts",
+  "scripts": {
+    "compile": "tsc",
+    "watch": "tsc -w",
+    "prepare": "yarn compile",
+    "lint": "node node_modules/tslint/bin/tslint -p ./tsconfig.json"
+  },
+  "keywords": [
+    "VSCode",
+    "Extension",
+    "Cover",
+    "Test"
+  ],
+  "author": "Microsoft",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Microsoft/vscodetestcover.git"
+  },
+  "devDependencies": {
+    "@types/node": "^10.7.0",
+    "@types/mocha": "^7.0.2",
+    "@types/istanbul-lib-coverage": "^2.0.1",
+    "@types/istanbul-lib-hook": "^2.0.0",
+    "@types/istanbul-lib-instrument": "^1.7.3",
+    "@types/istanbul-lib-report": "^3.0.0",
+    "@types/istanbul-lib-source-maps": "^1.2.2",
+    "@types/istanbul-reports": "^1.1.1",
+    "del": "^6.0.0",
+    "typescript": "^3.8.3",
+    "tslint": "^6.1.3",
+    "tslint-microsoft-contrib": "^6.2.0"
+  },
+  "dependencies": {
+    "decache": "^4.4.0",
+    "glob": "^7.1.2",
+    "istanbul-lib-coverage": "^3.0.0",
+    "istanbul-lib-hook": "^3.0.0",
+    "istanbul-lib-instrument": "^4.0.0",
+    "istanbul-lib-report": "^3.0.0",
+    "istanbul-lib-source-maps": "^3.0.6",
+    "istanbul-reports": "^3.0.0",
+    "mocha": "^10.2.0"
+  }
 }
