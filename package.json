@@ -8,11 +8,11 @@
 		"prepare": "yarn compile"
 	},
 	"dependencies": {
-		"decache": "4.6.2",
-		"glob": "11.0.0"
+		"decache": "4.4.0",
+		"glob": "7.1.2"
 	},
 	"devDependencies": {
-		"@types/node": "20.14.11",
-		"del": "7.1.0"
+		"@types/node": "10.7.0",
+		"del": "6.0.0"
 	}
 }
