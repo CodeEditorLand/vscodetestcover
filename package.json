@@ -1,12 +1,12 @@
 {
 	"dependencies": {
-		"decache": "^4.4.0",
-		"glob": "^7.1.2"
+		"decache": "4.4.0",
+		"glob": "7.1.2"
 	},
 	"description": "A Mocha test runner with code coverage support for VS Code Azure Data Studio Extensions.",
 	"devDependencies": {
-		"@types/node": "^10.7.0",
-		"del": "^6.0.0"
+		"@types/node": "10.7.0",
+		"del": "6.0.0"
 	},
 	"main": "./out/src/index.js",
 	"name": "@microsoft/vscodetestcover",
