@@ -4,7 +4,7 @@ A Mocha test runner with code coverage support for VS Code and Azure Data Studio
 Extensions. This replaces the standard test runner from `vscode/lib/testrunner`
 and adds in code coverage support.
 
-## Usage
+## 🛠️ Usage
 
 In a standard VSCode extension project, replace the `src/test/index.ts` file
 with the contents of `sample/index.ts` installed as part of this node module.
