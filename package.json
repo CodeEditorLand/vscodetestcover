@@ -1,18 +1,18 @@
 {
-	"name": "@microsoft/vscodetestcover",
-	"description": "A Mocha test runner with code coverage support for VS Code Azure Data Studio Extensions.",
-	"main": "./out/src/index.js",
-	"typings": "./out/src/index.d.ts",
-	"scripts": {
-		"compile": "tsc",
-		"prepare": "yarn compile"
-	},
 	"dependencies": {
 		"decache": "4.6.2",
 		"glob": "11.0.0"
 	},
+	"description": "A Mocha test runner with code coverage support for VS Code Azure Data Studio Extensions.",
 	"devDependencies": {
 		"@types/node": "22.7.3",
 		"del": "7.1.0"
-	}
+	},
+	"main": "./out/src/index.js",
+	"name": "@microsoft/vscodetestcover",
+	"scripts": {
+		"compile": "tsc",
+		"prepare": "yarn compile"
+	},
+	"typings": "./out/src/index.d.ts"
 }
