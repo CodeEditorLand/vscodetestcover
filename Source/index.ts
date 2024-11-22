@@ -55,6 +55,7 @@ class CoverageRunner {
 		this.instrumenter = iLibInstrument.createInstrumenter({
 			coverageVariable: this.coverageVar,
 		});
+
 		let sourceRoot = path.join(
 			this.testsRoot,
 			this.options.relativeSourcePath,
@@ -107,6 +108,7 @@ class CoverageRunner {
 		): string => {
 			// Try to find a .map file
 			let map = undefined;
+
 			try {
 				map = JSON.parse(
 					fs.readFileSync(`${options.filename}.map`).toString(),
@@ -126,6 +128,7 @@ class CoverageRunner {
 				map,
 			);
 		};
+
 		let hookOpts = { verbose: false, extensions: [".js"] };
 		this.unhookRequire = iLibHook.hookRequire(
 			this.matchFn,
@@ -145,7 +148,9 @@ class CoverageRunner {
 	 */
 	public reportCoverage(): void {
 		this.unhookRequire();
+
 		let cov: any;
+
 		if (
 			typeof global[this.coverageVar] === "undefined" ||
 			Object.keys(global[this.coverageVar]).length === 0
@@ -153,6 +158,7 @@ class CoverageRunner {
 			console.error(
 				"No coverage information was collected, exit without writing coverage information",
 			);
+
 			return;
 		} else {
 			cov = global[this.coverageVar];
@@ -180,6 +186,7 @@ class CoverageRunner {
 
 		// Convert the report to the mapped source files
 		const mapStore = iLibSourceMaps.createSourceMapStore();
+
 		const coverageMap = mapStore.transformCoverage(
 			iLibCoverage.createCoverageMap(global[this.coverageVar]),
 		).map;
@@ -211,7 +218,9 @@ class CoverageRunner {
 
 function readCoverOptions(testsRoot: string): ITestRunnerOptions {
 	let coverConfigPath = path.join(testsRoot, testOptions.coverConfig);
+
 	let coverConfig: ITestRunnerOptions = undefined;
+
 	if (fs.existsSync(coverConfigPath)) {
 		let configContent = fs.readFileSync(coverConfigPath).toString();
 		coverConfig = JSON.parse(configContent);
@@ -222,6 +231,7 @@ function readCoverOptions(testsRoot: string): ITestRunnerOptions {
 export function run(testsRoot: string, clb): any {
 	// Read configuration for the coverage file
 	let coverOptions: ITestRunnerOptions = readCoverOptions(testsRoot);
+
 	if (coverOptions && coverOptions.enabled) {
 		// Setup coverage pre-test, including post-test hook to report
 		let coverageRunner = new CoverageRunner(coverOptions, testsRoot, clb);
