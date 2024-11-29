@@ -28,14 +28,19 @@ export function configure(
 	testOpts: ITestCoverOptions,
 ): void {
 	mocha = new Mocha(mochaOpts);
+
 	testOptions = testOpts;
 }
 
 class CoverageRunner {
 	private coverageVar: string = "$$cov_" + new Date().getTime() + "$$";
+
 	private transformer: iLibHook.Transformer;
+
 	private unhookRequire: () => void;
+
 	private matchFn: any;
+
 	private instrumenter: iLibInstrument.Instrumenter;
 
 	constructor(
@@ -69,6 +74,7 @@ class CoverageRunner {
 
 		// Create a match function - taken from the run-with-cover.js in istanbul.
 		let fileMap = {};
+
 		srcFiles.forEach((file) => {
 			let fullPath = path.join(sourceRoot, file);
 			// Windows paths are (normally) case insensitive so convert to lower case
@@ -77,6 +83,7 @@ class CoverageRunner {
 			if (os.platform() === "win32") {
 				fullPath = fullPath.toLocaleLowerCase();
 			}
+
 			fileMap[fullPath] = true;
 
 			// On Windows, extension is loaded pre-test hooks and this mean we lose
@@ -95,8 +102,10 @@ class CoverageRunner {
 			if (os.platform() === "win32") {
 				file = file.toLocaleLowerCase();
 			}
+
 			return fileMap[file];
 		};
+
 		this.matchFn.files = Object.keys(fileMap);
 
 		// Hook up to the Require function so that when this is called, if any of our source files
@@ -122,6 +131,7 @@ class CoverageRunner {
 			if (os.platform() === "win32") {
 				options.filename = options.filename.toLocaleLowerCase();
 			}
+
 			return this.instrumenter.instrumentSync(
 				code,
 				options.filename,
@@ -130,6 +140,7 @@ class CoverageRunner {
 		};
 
 		let hookOpts = { verbose: false, extensions: [".js"] };
+
 		this.unhookRequire = iLibHook.hookRequire(
 			this.matchFn,
 			this.transformer,
@@ -223,8 +234,10 @@ function readCoverOptions(testsRoot: string): ITestRunnerOptions {
 
 	if (fs.existsSync(coverConfigPath)) {
 		let configContent = fs.readFileSync(coverConfigPath).toString();
+
 		coverConfig = JSON.parse(configContent);
 	}
+
 	return coverConfig;
 }
 
@@ -235,7 +248,9 @@ export function run(testsRoot: string, clb): any {
 	if (coverOptions && coverOptions.enabled) {
 		// Setup coverage pre-test, including post-test hook to report
 		let coverageRunner = new CoverageRunner(coverOptions, testsRoot, clb);
+
 		coverageRunner.setupCoverage();
+
 		mocha.suite.afterAll(() => {
 			coverageRunner.reportCoverage();
 		});
@@ -246,6 +261,7 @@ export function run(testsRoot: string, clb): any {
 		if (error) {
 			return clb(error);
 		}
+
 		try {
 			// Fill into Mocha
 			files.forEach(function (f): Mocha {
@@ -272,9 +288,14 @@ export interface ITestCoverOptions {
 
 interface ITestRunnerOptions {
 	enabled?: boolean;
+
 	relativeCoverageDir: string;
+
 	relativeSourcePath: string;
+
 	ignorePatterns: string[];
+
 	reports?: string[];
+
 	verbose?: boolean;
 }
