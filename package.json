@@ -12,7 +12,7 @@
 		"glob": "11.0.0"
 	},
 	"devDependencies": {
-		"@types/node": "22.10.1",
+		"@types/node": "22.10.5",
 		"del": "8.0.0"
 	}
 }
